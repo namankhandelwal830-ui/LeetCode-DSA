@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+        int n = nums.size();
+        int maxending = nums[0];
+        int minending = nums[0];
+        int result = nums[0];
+
+    // isme tere pass 3 choices hai yah toh i * min krde yah fir i * max krde yah fir i ko as its a[i] 
+
+        for (int i = 1; i < n; i++) {
+            int v1 = nums[i];
+            int v2 = maxending * nums[i];
+            int v3 = minending * nums[i];
+
+            maxending = max(v1, max(v2, v3));
+            minending = min(v1, min(v2, v3));
+           // result = max(result, max(maxending, minending)); tu aise kr skta prr dekh kyuki tujhe bas maxproduct suarray chayeh toh min ke zarurat nhi isliye hum isse avoid kr skte 
+           result = max(result,maxending);
+        }
+        return result;
+    }
+};
