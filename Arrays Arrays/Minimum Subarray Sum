@@ -1,0 +1,19 @@
+class Solution {
+	public:
+	int smallestSumSubarray(vector<int>& a) {
+		// Code here
+		int n = a.size();
+		int Bestending = a[0];
+		int ans = a[0];
+		
+		for (int i = 1; i < n ; i++)
+		{
+			int v1 = Bestending + a[i];
+			int v2 = a[i];
+			Bestending = min(v1, v2);
+			ans = min(ans, Bestending);
+		}
+		return ans;
+		
+	}
+};
